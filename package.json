@@ -1,0 +1,40 @@
+{
+  "name": "mobile-caller-demo-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node build",
+    "dev": "NODE_ENV=development babel-node src",
+    "build": "npm run clean && babel src -D -d build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "sequelize-cli db:migrate"
+  },
+  "author": "Yee Hui Poh <yee.poh@vonage.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "connection-string-parser": "^1.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.23.1",
+    "path": "^0.12.7",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.13",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.10.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "regenerator-runtime": "^0.13.2",
+    "sequelize-cli": "^5.5.1"
+  }
+}

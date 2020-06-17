@@ -1,0 +1,14 @@
+{
+  "name": "Opentok Mobile Caller Demo Server",
+  "description": "Server backend for Opentok Mobile Caller Demo",
+  "success_url": "/",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "DATABASE_USE_SSL": {
+      "description": "Use SSL for Database Connection. Set to true for Heroku",
+      "value": "true"
+    }
+  }
+}

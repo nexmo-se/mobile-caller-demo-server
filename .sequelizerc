@@ -1,0 +1,8 @@
+require('dotenv').config();
+
+module.exports = {
+  'config': 'src/services/database/config.js',
+  'models-path': 'src/services/database/models',
+  'seeders-path': 'src/services/database/seeders',
+  'migrations-path': 'src/services/database/migrations',
+};
