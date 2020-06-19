@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 import databaseService from './database';
 
 const listTokens = async () => {
@@ -39,6 +41,7 @@ const setToken = async (mobileNumber, token) => {
 
     // Add New
     const data = {
+      id: uuid.v4(),
       mobileNumber,
       pushyToken: token,
     };
