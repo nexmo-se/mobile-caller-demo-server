@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import databaseService from './database';
 
@@ -41,7 +41,7 @@ const setToken = async (mobileNumber, token) => {
 
     // Add New
     const data = {
-      id: uuid.v4(),
+      id: uuid(),
       mobileNumber,
       pushyToken: token,
     };
