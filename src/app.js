@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import helmet from 'helmet';
 
+import router from './routes';
+
 const environment = process.env.NODE_ENV || 'production';
 const port = process.env.PORT || 8080;
 
@@ -43,7 +45,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/', (_, res) => res.send('ok'));
+app.use('/', router);
 app.use(handleError);
 
 const httpServer = http.createServer(app);

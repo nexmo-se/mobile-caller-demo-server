@@ -9,6 +9,9 @@
     "DATABASE_USE_SSL": {
       "description": "Use SSL for Database Connection. Set to true for Heroku",
       "value": "true"
+    },
+    "PUSHY_SECRET_API_KEY": {
+      "description": "Secret API Key for sending Push Notification via Pushy"
     }
   }
 }

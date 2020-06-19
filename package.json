@@ -8,7 +8,8 @@
     "dev": "NODE_ENV=development babel-node src",
     "build": "npm run clean && babel src -D -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "sequelize-cli db:migrate"
+    "migrate": "sequelize-cli db:migrate",
+    "heroku-postbuild": "npm run build && npm run migrate"
   },
   "author": "Yee Hui Poh <yee.poh@vonage.com>",
   "license": "ISC",
