@@ -12,6 +12,12 @@
     },
     "PUSHY_SECRET_API_KEY": {
       "description": "Secret API Key for sending Push Notification via Pushy"
+    },
+    "OT_API_KEY": {
+      "description": "API Key for Opentok Project"
+    },
+    "OT_API_SECRET": {
+      "description": "API Secret for Opentok Project"
     }
   }
 }

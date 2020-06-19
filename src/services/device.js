@@ -1,5 +1,19 @@
 import databaseService from './database';
 
+const listTokens = async () => {
+  try {
+    const { Device } = databaseService;
+
+    // Select
+    const tokens = await Device.findAll({});
+    const mappedTokens = tokens.map(token => token.dataValues.pushyToken);
+
+    return Promise.resolve(mappedTokens);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 const getToken = async (mobileNumber) => {
   try {
     const { Device } = databaseService;
@@ -38,6 +52,7 @@ const setToken = async (mobileNumber, token) => {
 };
 
 export default {
+  listTokens,
   getToken,
   setToken,
 };

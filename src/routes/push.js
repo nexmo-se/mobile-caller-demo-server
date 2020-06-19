@@ -5,7 +5,18 @@ import pushyService from '../services/pushy';
 
 const router = express.Router();
 
-router.get('/', (_, res) => res.send('push'));
+router.get('/', async (_, res) => {
+  try {
+    // List Token
+    const tokens = await deviceService.listTokens() || [];
+    console.log(`Listed Mobile Token - ${tokens.length} tokens`);
+
+    res.json(tokens);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+});
 
 router.post('/:mobileNumber/register', async (req, res) => {
   try {
