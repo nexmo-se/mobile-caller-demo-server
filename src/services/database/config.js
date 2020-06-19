@@ -1,4 +1,4 @@
-import { ConnectionStringParser } from 'connection-string-parser';
+const { ConnectionStringParser } = require('connection-string-parser');
 
 const connectionStringParser = new ConnectionStringParser({ scheme: 'postgres' });
 const connectionString = process.env.DATABASE_URL;
@@ -37,7 +37,7 @@ const config = {
 };
 
 
-export default {
+module.exports = {
   development: config,
   test: config,
   production: config,
