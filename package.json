@@ -7,6 +7,7 @@
     "start": "NODE_ENV=production node build",
     "dev": "NODE_ENV=development babel-node src",
     "build": "npm run clean && babel src -D -d build",
+    "clean": "rm -rf build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "sequelize-cli db:migrate",
     "heroku-postbuild": "npm run build && npm run migrate"
@@ -29,6 +30,7 @@
     "uuid": "^8.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.10.2",
