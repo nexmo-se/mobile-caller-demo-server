@@ -98,4 +98,22 @@ router.post('/reject', async (req, res) => {
   }
 });
 
+router.post('/answer', async (req, res) => {
+  try {
+    const { to } = req.body;
+
+    // Push to Callee
+    const pushToken = await deviceService.getToken(to);
+    pushyService.sendPush(pushToken, { action: 'ACTION_ANSWER_CALL' })
+      .then(() => console.log('Pushed to Device'))
+      .catch(error => console.error(error));
+
+    // Respond to Caller
+    res.send('ok');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+});
+
 export default router;
