@@ -8,6 +8,48 @@ const router = express.Router();
 
 router.get('/', (_, res) => res.send('push'));
 
+router.post('/createSession', async (req, res) => {
+  try {
+    // Create Session
+    const { apiKey, sessionId } = await opentokService.createSession();
+
+    // Get Token
+    const token = await opentokService.getToken(sessionId);
+
+    // Respond to Caller
+    res.json({ apiKey, sessionId, token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+});
+
+router.post('/notifyCallee', async (req, res) => {
+  try {
+    const { from, to, sessionId } = req.body;
+
+    // API Key
+    const apiKey = opentokService.getApiKey();
+
+    // Get Token
+    const token = await opentokService.getToken(sessionId);
+
+    // Push to Callee
+    const pushToken = await deviceService.getToken(to);
+    pushyService.sendPush(pushToken, {
+      action: 'ACTION_INCOMING_CALL', from, apiKey, sessionId, token,
+    })
+      .then(() => console.log('Pushed to Device'))
+      .catch(error => console.error(error));
+
+    // Respond to Caller
+    res.send('ok');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+});
+
 router.post('/call', async (req, res) => {
   try {
     const { from, to } = req.body;

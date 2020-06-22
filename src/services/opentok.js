@@ -5,6 +5,8 @@ let otClient = null;
 const apiKey = process.env.OT_API_KEY;
 const apiSecret = process.env.OT_API_SECRET;
 
+const getApiKey = () => apiKey;
+
 const getClient = () => {
   if (otClient == null) {
     otClient = new OpenTok(apiKey, apiSecret);
@@ -36,6 +38,7 @@ const createSession = () => new Promise((resolve, reject) => {
 });
 
 export default {
+  getApiKey,
   createSession,
   getToken,
 };
