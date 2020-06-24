@@ -54,8 +54,23 @@ const setToken = async (mobileNumber, token) => {
   }
 };
 
+const clearToken = async (mobileNumber) => {
+  try {
+    const { Device } = databaseService;
+
+    // Clear Existing
+    const criteria = { where: { mobileNumber } };
+    await Device.destroy(criteria);
+
+    return Promise.resolve();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export default {
   listTokens,
   getToken,
   setToken,
+  clearToken,
 };

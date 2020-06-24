@@ -34,6 +34,21 @@ router.post('/:mobileNumber/register', async (req, res) => {
   }
 });
 
+router.post('/:mobileNumber/unregister', async (req, res) => {
+  try {
+    const { mobileNumber } = req.params;
+
+    // Clear Token
+    await deviceService.clearToken(mobileNumber);
+    console.log(`Cleared Mobile Token for ${mobileNumber}`);
+
+    res.send('ok');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+});
+
 router.post('/:mobileNumber/push', async (req, res) => {
   try {
     const { mobileNumber } = req.params;
